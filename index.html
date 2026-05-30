@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Curso de Funciones Matemáticas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body {
+    background:#0b1120;
+    color:#f1f5f9;
+    overflow-x:hidden;
+}
+
+/* ========================= */
+/* PORTADA */
+/* ========================= */
+
+.hero {
+    width:100%;
+    height:100vh;
+    background:
+    linear-gradient(rgba(2,6,23,.80),rgba(2,6,23,.90)),
+    url('https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=1974&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+}
+
+.hero-content {
+    max-width:850px;
+    animation:fadeUp 1s ease;
+}
+
+.hero-content h1 {
+    font-size:72px;
+    line-height:1.1;
+    margin-bottom:25px;
+    font-weight:700;
+}
+
+.hero-content span {
+    color:#38bdf8;
+}
+
+.hero-content p {
+    color:#cbd5e1;
+    font-size:20px;
+    margin-bottom:40px;
+    line-height:1.8;
+}
+
+.hero-buttons {
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.btn {
+    padding:16px 34px;
+    border:none;
+    border-radius:14px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.btn-primary {
+    background:#38bdf8;
+    color:#0f172a;
+}
+
+.btn-primary:hover {
+    transform:translateY(-3px);
+    background:#7dd3fc;
+}
+
+.btn-secondary {
+    border:1px solid #334155;
+    color:white;
+    background:transparent;
+}
+
+.btn-secondary:hover {
+    background:#1e293b;
+}
+
+/* ========================= */
+/* CONTENIDO */
+/* ========================= */
+
+.container {
+    display:flex;
+}
+
+/* ========================= */
+/* MENU LATERAL */
+/* ========================= */
+
+.sidebar {
+    width:270px;
+    background:#020617;
+    min-height:100vh;
+    padding:40px 25px;
+    position:sticky;
+    top:0;
+    border-right:1px solid #1e293b;
+}
+
+.logo {
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:50px;
+}
+
+.logo span {
+    color:#38bdf8;
+}
+
+.sidebar a {
+    display:block;
+    text-decoration:none;
+    color:#cbd5e1;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:10px;
+    transition:.3s;
+}
+
+.sidebar a:hover {
+    background:#0f172a;
+    color:#38bdf8;
+}
+
+/* ========================= */
+/* MAIN */
+/* ========================= */
+
+.main {
+    flex:1;
+    padding:70px;
+}
+
+.section {
+    margin-bottom:100px;
+}
+
+.section-title {
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.section-description {
+    color:#94a3b8;
+    margin-bottom:40px;
+    line-height:1.8;
+}
+
+/* ========================= */
+/* CARDS */
+/* ========================= */
+
+.card {
+    background:#111827;
+    border:1px solid #1e293b;
+    padding:35px;
+    border-radius:24px;
+    margin-bottom:30px;
+    transition:.3s;
+}
+
+.card:hover {
+    transform:translateY(-5px);
+    border-color:#38bdf8;
+}
+
+.card h3 {
+    margin-bottom:20px;
+    color:#38bdf8;
+    font-size:24px;
+}
+
+.card p {
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+.card ul {
+    padding-left:20px;
+    margin-top:15px;
+}
+
+.card li {
+    margin-bottom:10px;
+    color:#cbd5e1;
+}
+
+/* ========================= */
+/* VIDEO LOCAL */
+/* ========================= */
+
+video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Mantiene la proporción panorámica perfecta */
+    border: none;
+    border-radius: 20px;
+    margin-top: 20px;
+    background: #000;
+}
+
+/* ========================= */
+/* EJERCICIOS */
+/* ========================= */
+
+.exercise {
+    background:#0f172a;
+    border:1px solid #1e293b;
+    padding:20px;
+    border-radius:18px;
+    margin-top:20px;
+}
+
+.exercise strong {
+    color:#38bdf8;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer {
+    text-align:center;
+    padding:40px;
+    color:#64748b;
+    border-top:1px solid #1e293b;
+}
+
+/* ========================= */
+/* ANIMACIONES */
+/* ========================= */
+
+@keyframes fadeUp {
+    from {
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media(max-width:1000px){
+    .container { flex-direction:column; }
+    .sidebar { width:100%; min-height:auto; position:relative; }
+    .main { padding:30px; }
+    .hero-content h1 { font-size:48px; }
+    /* Eliminamos la altura del video aquí para que mantenga el aspect ratio */
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Curso de <span>Funciones Matemáticas</span></h1>
+        <p>
+            Plataforma educativa interactiva diseñada para aprender
+            funciones matemáticas de manera moderna, visual y organizada.
+            Aquí encontrarás teoría, ejemplos, videos y ejercicios prácticos.
+        </p>
+        <div class="hero-buttons">
+            <a href="#contenido" class="btn btn-primary">Comenzar Curso</a>
+            <a href="#introduccion" class="btn btn-secondary">Ver Introducción</a>
+        </div>
+    </div>
+</section>
+
+<div class="container" id="contenido">
+
+    <aside class="sidebar">
+        <div class="logo">
+            Funciones<span>.</span>
+        </div>
+        <a href="#introduccion">Introducción</a>
+        <a href="#lineal">Función Lineal</a>
+        <a href="#cuadratica">Función Cuadrática</a>
+        <a href="#cubica">Función Cúbica</a>
+        <a href="#operaciones">Operaciones</a>
+        <a href="#ejercicios">Ejercicios</a>
+        <a href="#fuentes">Fuentes</a>
+    </aside>
+
+    <main class="main">
+
+        <section class="section" id="introduccion">
+            <h2 class="section-title">Bienvenido</h2>
+            <p class="section-description">
+                Esta página web educativa fue desarrollada con el objetivo de
+                explicar de manera clara y moderna el tema de funciones matemáticas,
+                evaluación y operaciones.
+                <br><br>
+                <strong>Nombre del estudiante:</strong> Ariel Yuam Vides Ordoñez<br>
+                <strong>Curso:</strong> Cálculo I<br>
+                <strong>Tema:</strong> Funciones Matemáticas, Evaluación y Operaciones
+            </p>
+            <div class="card">
+                <h3>¿Qué encontrarás?</h3>
+                <ul>
+                    <li>Explicaciones teóricas estructuradas.</li>
+                    <li>Videos explicativos grabados localmente.</li>
+                    <li>Ejemplos resueltos paso a paso.</li>
+                    <li>Ejercicios prácticos de evaluación.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="lineal">
+            <h2 class="section-title">Función Lineal</h2>
+            <p class="section-description">
+                Una función polinomial de primer grado cuya representación en el plano es una línea recta.
+            </p>
+            <div class="card">
+                <h3>Teoría</h3>
+                <p>
+                    Su dominio natural y su contradominio son todos los números reales (-∞, +∞). 
+                    Se clasifica como una función inyectiva. La fórmula general es:
+                    <br><br>
+                    <strong>f(x) = mx + b</strong>
+                    <br><br>
+                    Donde <strong>m</strong> es la pendiente y <strong>b</strong> es la intersección con el eje Y.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Video Explicativo</h3>
+                <video controls>
+                    <source src="video1.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+            <div class="card">
+                <h3>Ejemplo</h3>
+                <p>
+                    Para la función: <strong>y = 3x + 2</strong>
+                    <br><br>
+                    Si evaluamos valores en una tabla:
+                </p>
+                <ul>
+                    <li>Si x = -3, y = -7</li>
+                    <li>Si x = 0, y = 2</li>
+                    <li>Si x = 3, y = 11</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="cuadratica">
+            <h2 class="section-title">Función Cuadrática</h2>
+            <p class="section-description">
+                Función polinomial de segundo grado que genera una parábola.
+            </p>
+            <div class="card">
+                <h3>Teoría</h3>
+                <p>
+                    Su gráfica es una parábola (x²). Su contradominio está limitado por su punto más bajo o más alto, dependiendo de si la parábola abre hacia arriba o hacia abajo. Su dominio natural son todos los números reales.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Video Explicativo</h3>
+                <video controls>
+                    <source src="video2.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+            <div class="card">
+                <h3>Ejemplo</h3>
+                <p>
+                    <strong>Función:</strong> h(x) = x² - 4<br><br>
+                    El dominio es infinito (-∞, +∞), pero su contradominio es [-4, +∞) porque su punto más bajo en el eje Y es -4.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="cubica">
+            <h2 class="section-title">Función Cúbica</h2>
+            <p class="section-description">
+                Función polinomial de tercer grado que genera una curva continua que cruza los ejes.
+            </p>
+            <div class="card">
+                <h3>Teoría</h3>
+                <p>
+                    A diferencia de la cuadrática, la función cúbica (x³) conserva los signos negativos al elevarse. Esto genera una curva donde su dominio y contradominio suelen abarcar todos los números reales (-∞, +∞). Es una función inyectiva.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Video Explicativo</h3>
+                <video controls>
+                    <source src="video3.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+            <div class="card">
+                <h3>Ejemplo</h3>
+                <p>
+                    <strong>Función:</strong> g(x) = 2x³ + 8<br><br>
+                    Si evaluamos valores negativos, por ejemplo x = -2, el resultado también puede ser negativo: y = -8. Esto permite que la gráfica se extienda infinitamente en ambas direcciones.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="operaciones">
+            <h2 class="section-title">Operaciones de Funciones</h2>
+            <p class="section-description">
+                Las funciones pueden sumarse, restarse, dividirse o componerse evaluándolas en puntos específicos.
+            </p>
+            <div class="card">
+                <h3>Teoría</h3>
+                <p>
+                    Podemos resolver operaciones complejas evaluando primero la función con el valor de 'x' asignado y luego realizando la aritmética básica entre los resultados. También existe la composición [f o g](x), donde evaluamos una función dentro de la otra.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Video Explicativo</h3>
+                <video controls>
+                    <source src="video4.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+            <div class="card">
+                <h3>Ejemplo de Suma</h3>
+                <p>
+                    Dadas f(x) = 2x² - 4 y g(x) = 6x - 3. Calcular <strong>[f + g](4)</strong>:
+                    <br><br>
+                    1. f(4) = 2(4)² - 4 = 2(16) - 4 = 28<br>
+                    2. g(4) = 6(4) - 3 = 24 - 3 = 21<br>
+                    3. f + g = 28 + 21 = <strong>49</strong>
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="ejercicios">
+            <h2 class="section-title">Ejercicios Prácticos</h2>
+            <p class="section-description">
+                Resuelve los siguientes ejercicios basados en los apuntes del curso.
+            </p>
+
+            <div class="exercise">
+                1. Construye la tabla de valores desde x = -3 hasta x = 3 para la función:
+                <br><br>
+                <strong>y = 2x</strong>
+            </div>
+
+            <div class="exercise">
+                2. Grafica e identifica el dominio y contradominio de la siguiente función cuadrática:
+                <br><br>
+                <strong>h(x) = x² + 4</strong>
+            </div>
+
+            <div class="exercise">
+                3. Dadas las funciones y(x) = 3x + 2 y h(x) = x² - 4, encuentra el valor de la suma evaluada en 3:
+                <br><br>
+                <strong>[y + h](3) = ?</strong>
+            </div>
+        </section>
+
+        <section class="section" id="fuentes">
+            <h2 class="section-title">Fuentes de Información</h2>
+            <div class="card">
+                <ul>
+                    <li>Apuntes de clase - Cálculo I</li>
+                    <li>Demostraciones matemáticas (Ejercicios propios)</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            Página educativa desarrollada para fines académicos por VidessLabs.
+        </footer>
+
+    </main>
+</div>
+
+</body>
+</html>
